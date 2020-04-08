@@ -1,15 +1,10 @@
 import React, { Component } from "react";
 import axios from "axios";
 import { ITicket } from "../models/ticket";
-import { Layout, Menu } from "antd";
+import { Layout, Menu, List, Avatar } from "antd";
 import {
-  AppstoreOutlined,
-  BarChartOutlined,
   MenuUnfoldOutlined,
   MenuFoldOutlined,
-  CloudOutlined,
-  ShopOutlined,
-  TeamOutlined,
   UserOutlined,
   UploadOutlined,
   VideoCameraOutlined
@@ -43,13 +38,18 @@ class App extends Component<{}, IState> {
   render() {
     return (
       <Layout>
-      <Sider           style={{
+        <Sider
+          style={{
             overflow: "auto",
             height: "100vh",
             left: 0
-          }} trigger={null} collapsible collapsed={this.state.collapsed}>
+          }}
+          trigger={null}
+          collapsible
+          collapsed={this.state.collapsed}
+        >
           <div className="logo" />
-          <Menu theme="dark" mode="inline" defaultSelectedKeys={['1']}>
+          <Menu theme="dark" mode="inline" defaultSelectedKeys={["1"]}>
             <Menu.Item key="1">
               <UserOutlined />
               <span>nav 1</span>
@@ -65,21 +65,36 @@ class App extends Component<{}, IState> {
           </Menu>
         </Sider>
         <Layout className="site-layout" style={{ padding: 0 }}>
-        <Header className="site-layout-background" style={{ padding: 0 }}>
-            {React.createElement(this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined, {
-              className: 'trigger',
-              onClick: this.toggle,
-            })}
+          <Header className="site-layout-background" style={{ padding: 0 }}>
+            {React.createElement(
+              this.state.collapsed ? MenuUnfoldOutlined : MenuFoldOutlined,
+              {
+                className: "trigger",
+                onClick: this.toggle
+              }
+            )}
           </Header>
           <Content
             className="site-layout-background"
             style={{
-              margin: '24px 16px',
+              margin: "24px 16px",
               padding: 24,
-              minHeight: 280,
+              minHeight: 280
             }}
           >
-            Content
+            <List itemLayout="horizontal">
+              {this.state.tickets.map(ticket => (
+                <List.Item key={ticket.id}>
+                  <List.Item.Meta
+                    avatar={
+                      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                    }
+                    title={<a href="https://ant.design">{ticket.title}</a>}
+                    description="Ant Design, a design language for background applications, is refined by Ant UED Team"
+                  />
+                </List.Item>
+              ))}
+            </List>
           </Content>
           <Footer style={{ textAlign: "center" }}>
             Ant Design ©2018 Created by Ant UED
