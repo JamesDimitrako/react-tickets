@@ -3,14 +3,13 @@ import axios from "axios";
 import { ITicket } from "../models/ticket";
 import { Layout, Menu, List, Avatar } from "antd";
 import {
-  MenuUnfoldOutlined,
-  MenuFoldOutlined,
   UserOutlined,
   UploadOutlined,
   VideoCameraOutlined
 } from "@ant-design/icons";
+import NavBar from "../../features/nav/NavBar";
 
-const { Header, Content, Footer, Sider } = Layout;
+const { Content, Footer, Sider } = Layout;
 
 const App = () => {
   const [tickets, setTickets] = useState<ITicket[]>([]);
@@ -56,15 +55,7 @@ const App = () => {
         </Menu>
       </Sider>
       <Layout className="site-layout" style={{ padding: 0 }}>
-        <Header className="site-layout-background" style={{ padding: 0 }}>
-          {React.createElement(
-            true ? MenuUnfoldOutlined : MenuFoldOutlined,
-            {  
-              className: "trigger",
-              // onClick: 
-            }
-          )}
-        </Header>
+       <NavBar />
         <Content
           className="site-layout-background"
           style={{
