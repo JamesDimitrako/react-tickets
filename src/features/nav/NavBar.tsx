@@ -6,6 +6,15 @@ import {
   } from "@ant-design/icons";
   
 const { Header } = Layout;
+
+
+  // toggle = () => {
+  //   this.setState({
+  //     collapsed: !this.state.collapsed
+  //   });
+  // };
+
+
 const NavBar = () => {
     return (
         <Header className="site-layout-background" style={{ padding: 0 }}>
