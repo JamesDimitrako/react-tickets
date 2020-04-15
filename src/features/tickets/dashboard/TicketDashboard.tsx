@@ -1,6 +1,7 @@
 import React from "react";
 import { ITicket } from "../../../app/models/ticket";
-import { Layout, List, Avatar, Row, Col } from "antd";
+import { Layout, Row, Col } from "antd";
+import TicketList from "./TicketList";
 
 const { Content } = Layout;
 
@@ -19,19 +20,7 @@ const TicketDashboard: React.FC<IProps> = ({ tickets }) => {
           minHeight: 280
         }}
       >
-        <List itemLayout="horizontal">
-          {tickets.map(ticket => (
-            <List.Item key={ticket.id}>
-              <List.Item.Meta
-                avatar={
-                  <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
-                }
-                title={<a href="https://ant.design">{ticket.title}</a>}
-                description="Ant Design, a design language for background applications, is refined by Ant UED Team"
-              />
-            </List.Item>
-          ))}
-        </List>
+      <TicketList tickets={tickets}/>
       </Content>
       <Col span={8}></Col>
     </Row>
